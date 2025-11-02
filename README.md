@@ -89,7 +89,7 @@ weather-app/
 ```
 
 ## ДЕМО-ВЕРСИЯ
-Демо версия доступна по адресу https://weather.waznaw.ru
+Демо версия доступна по адресу <a href="https://weather.waznaw.ru" targer="_blank">weather.waznaw.ru</a>
 
 ## Автор
 Это проект с открытым исходным кодом, распространяемый под лицензией MIT. Исходный код доступен на [GitHub](https://github.com/DontCallMeShurley/WaznawWeather).

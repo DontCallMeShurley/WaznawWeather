@@ -7,6 +7,8 @@ const CONFIG = {
     DEFAULT_CITY: 'Moscow',
     STORAGE_KEY: 'weather_history',
     THEME_KEY: 'weather_theme',
+    LAST_LOCATION_KEY: 'weather_last_location',
+    LOCATION_CACHE_HOURS: 24,
     MAX_HISTORY_ITEMS: 50,
     DEBOUNCE_DELAY: 300
 };
@@ -74,8 +76,7 @@ const DOM = {
     errorText: document.getElementById('errorText'),
     loadingText: document.getElementById('loadingText'),
     
-    // Footer
-    copyrightText: document.getElementById('copyrightText')
+    // Footer - removed as no longer exists in HTML
 };
 
 // ===== Theme Management =====
@@ -241,6 +242,7 @@ function selectCity(city) {
         longitude: city.longitude
     };
     fetchWeatherData(city.latitude, city.longitude, city.name);
+    saveLastLocation(city.latitude, city.longitude, city.name);
 }
 
 // ===== Geolocation Functions =====
@@ -270,8 +272,11 @@ async function getUserLocation() {
                     : 'Текущее местоположение';
                 
                 fetchWeatherData(latitude, longitude, cityName);
+                saveLastLocation(latitude, longitude, cityName);
             } catch (error) {
-                fetchWeatherData(latitude, longitude, 'Текущее местоположение');
+                const defaultName = 'Текущее местоположение';
+                fetchWeatherData(latitude, longitude, defaultName);
+                saveLastLocation(latitude, longitude, defaultName);
             }
         },
         (error) => {
@@ -603,6 +608,37 @@ function initEventListeners() {
     initTabs();
 }
 
+// ===== Location Cache Management =====
+function saveLastLocation(latitude, longitude, cityName) {
+    const locationData = {
+        latitude: latitude,
+        longitude: longitude,
+        cityName: cityName,
+        timestamp: new Date().getTime()
+    };
+    localStorage.setItem(CONFIG.LAST_LOCATION_KEY, JSON.stringify(locationData));
+}
+
+function getLastLocation() {
+    const saved = localStorage.getItem(CONFIG.LAST_LOCATION_KEY);
+    if (!saved) return null;
+    
+    try {
+        const locationData = JSON.parse(saved);
+        const now = new Date().getTime();
+        const hoursPassed = (now - locationData.timestamp) / (1000 * 60 * 60);
+        
+        // Check if location is still valid (less than 24 hours old)
+        if (hoursPassed < CONFIG.LOCATION_CACHE_HOURS) {
+            return locationData;
+        }
+    } catch (error) {
+        console.error('Error loading last location:', error);
+    }
+    
+    return null;
+}
+
 // ===== Application Initialization =====
 async function initApp() {
     initTheme();
@@ -618,7 +654,6 @@ async function initApp() {
     DOM.historyTitle.textContent = "История";
     DOM.clearHistory.textContent = "Очистить историю";
     DOM.loadingText.textContent = "Загрузка данных...";
-    DOM.copyrightText.textContent = "Все права защищены";
     
     // Update weather detail labels
     const detailLabels = DOM.currentWeather.querySelectorAll('.detail-label');
@@ -638,12 +673,21 @@ async function initApp() {
     initEventListeners();
     loadHistory();
     
-    // Try to get user's location on load
-    if (navigator.geolocation) {
-        getUserLocation();
+    // Check for cached location first
+    const lastLocation = getLastLocation();
+    if (lastLocation) {
+        // Use cached location
+        console.log('Using cached location:', lastLocation.cityName);
+        DOM.cityInput.value = lastLocation.cityName;
+        fetchWeatherData(lastLocation.latitude, lastLocation.longitude, lastLocation.cityName);
     } else {
-        // Fallback to Moscow
-        searchCities(CONFIG.DEFAULT_CITY);
+        // No cached location or expired, try to get user's location
+        if (navigator.geolocation) {
+            getUserLocation();
+        } else {
+            // Fallback to Moscow
+            searchCities(CONFIG.DEFAULT_CITY);
+        }
     }
 }
 
@@ -654,7 +698,9 @@ if (document.readyState === 'loading') {
     initApp();
 }
 
-// Service Worker Registration (for offline support)
+// Service Worker registration commented out - not needed for file:// protocol
+// Uncomment if you deploy this to a web server
+/*
 if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
         navigator.serviceWorker.register('sw.js').catch(err => {
@@ -662,3 +708,4 @@ if ('serviceWorker' in navigator) {
         });
     });
 }
+*/

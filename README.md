@@ -1,6 +1,6 @@
 # Погодное приложение Waznaw
 
-![Главный экран приложения](screenshots/main-screen.png)
+<img width="1238" height="1159" alt="image" src="https://github.com/user-attachments/assets/1cf0adb4-317b-45e9-a3e4-b1924ba3a9e1" />
 
 Интерактивное приложение для просмотра текущей погоды и прогноза на ближайшие дни. Работает без API-ключей, используя открытые данные.
 
@@ -23,13 +23,10 @@
 
 ## Скриншоты
 
-| Функционал | Описание | Скриншот |
-|------------|----------|----------|
-| **Текущая погода** | Отображает температуру, влажность, ветер и другие параметры | ![Текущая погода](screenshots/current-weather.png) |
-| **Почасовой прогноз** | Показывает погоду на ближайшие 24 часа | ![Почасовой прогноз](screenshots/hourly-forecast.png) |
-| **Прогноз на 7 дней** | Отображает погоду на неделю вперед | ![Прогноз на 7 дней](screenshots/daily-forecast.png) |
-| **История запросов** | Сохраняет историю просмотра погоды за неделю | ![История запросов](screenshots/history.png) |
-| **Темная тема** | Ночной режим для комфортного использования | ![Темная тема](screenshots/dark-theme.png) |
+<img width="1294" height="1050" alt="image" src="https://github.com/user-attachments/assets/ac20dc64-da4e-465d-89b5-22226b87551f" />
+<img width="1252" height="876" alt="image" src="https://github.com/user-attachments/assets/84b015a3-4e05-4f41-89c2-690f380fccb3" />
+<img width="1189" height="637" alt="image" src="https://github.com/user-attachments/assets/45086288-f4a3-474b-abd8-b99756e7509c" />
+
 
 ## Установка и запуск
 
@@ -80,5 +77,8 @@ weather-app/
 └── screenshots/        # Папка для скриншотов
 ```
 
+## ДЕМО-ВЕРСИЯ
+Демо версия доступна по адресу weather.waznaw.ru
+
 ## Автор
-Проект разработан Waznaw © 2025
+Проект разработан Shurley, CEO Waznaw © 2025

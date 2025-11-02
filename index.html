@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Погода - Waznaw</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Theme Toggle -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему">
+            <span class="theme-icon sun">☀️</span>
+            <span class="theme-icon moon">🌙</span>
+        </button>
+
+
+        <!-- Header -->
+        <header class="app-header">
+            <h1 id="appTitle">Прогноз погоды</h1>
+            <p id="subtitle" class="subtitle">Актуальные данные и история за неделю</p>
+        </header>
+
+        <!-- Search Section -->
+        <section class="search-section">
+            <div class="search-container">
+                <input 
+                    type="text" 
+                    id="cityInput" 
+                    class="city-input" 
+                    placeholder="Введите название города..."
+                    autocomplete="off"
+                >
+                <button id="searchBtn" class="search-btn">
+                    <span id="searchBtnText">🔍 Найти</span>
+                </button>
+                <button id="locationBtn" class="location-btn" title="Использовать моё местоположение">
+                    <span>📍</span>
+                </button>
+            </div>
+            <div id="suggestions" class="suggestions"></div>
+        </section>
+
+        <!-- Current Weather -->
+        <section id="currentWeather" class="current-weather hidden">
+            <div class="weather-main">
+                <div class="location-info">
+                    <h2 id="cityName" class="city-name"></h2>
+                    <p id="currentDate" class="current-date"></p>
+                </div>
+                <div class="temperature-display">
+                    <div class="temp-main">
+                        <span id="temperature" class="temperature"></span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                    <div class="weather-icon-container">
+                        <span id="weatherIcon" class="weather-icon"></span>
+                    </div>
+                </div>
+                <p id="weatherDescription" class="weather-description"></p>
+            </div>
+            
+            <div class="weather-details">
+                <div class="detail-item">
+                    <span class="detail-icon">💧</span>
+                    <div class="detail-info">
+                        <span class="detail-label">Влажность</span>
+                        <span id="humidity" class="detail-value"></span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">💨</span>
+                    <div class="detail-info">
+                        <span class="detail-label">Ветер</span>
+                        <span id="windSpeed" class="detail-value"></span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">🌡️</span>
+                    <div class="detail-info">
+                        <span class="detail-label">Ощущается</span>
+                        <span id="feelsLike" class="detail-value"></span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">👁️</span>
+                    <div class="detail-info">
+                        <span class="detail-label">Видимость</span>
+                        <span id="visibility" class="detail-value"></span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">⬇️</span>
+                    <div class="detail-info">
+                        <span class="detail-label">Давление</span>
+                        <span id="pressure" class="detail-value"></span>
+                    </div>
+                </div>
+                <div class="detail-item">
+                    <span class="detail-icon">☁️</span>
+                    <div class="detail-info">
+                        <span class="detail-label">Облачность</span>
+                        <span id="cloudiness" class="detail-value"></span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Forecast Tabs -->
+        <div id="forecastTabs" class="forecast-tabs hidden">
+            <button class="tab-btn active" data-tab="hourly" id="hourlyTab">Почасовой прогноз</button>
+            <button class="tab-btn" data-tab="daily" id="dailyTab">На 7 дней</button>
+            <button class="tab-btn" data-tab="history" id="historyTab">История</button>
+        </div>
+
+        <!-- Hourly Forecast -->
+        <section id="hourlyForecast" class="forecast-section hourly-forecast hidden" data-tab-content="hourly">
+            <h3>Прогноз на ближайшие 24 часа</h3>
+            <div class="hourly-scroll">
+                <div id="hourlyList" class="hourly-list"></div>
+            </div>
+        </section>
+
+        <!-- Daily Forecast -->
+        <section id="dailyForecast" class="forecast-section daily-forecast hidden" data-tab-content="daily">
+            <h3>Прогноз на неделю</h3>
+            <div id="dailyList" class="daily-list"></div>
+        </section>
+
+        <!-- History Section -->
+        <section id="historySection" class="forecast-section history-section hidden" data-tab-content="history">
+            <div class="history-header">
+                <h3 id="historyTitle">История погоды</h3>
+                <button id="clearHistory" class="clear-history-btn">Очистить историю</button>
+            </div>
+            <div id="historyList" class="history-list">
+                <p id="noHistoryText" class="no-history">История погоды пока пуста</p>
+            </div>
+        </section>
+
+        <!-- Loading Indicator -->
+        <div id="loadingIndicator" class="loading-indicator hidden">
+            <div class="spinner"></div>
+            <p id="loadingText">Загрузка данных...</p>
+        </div>
+
+        <!-- Error Message -->
+        <div id="errorMessage" class="error-message hidden">
+            <span class="error-icon">⚠️</span>
+            <p id="errorText"></p>
+        </div>
+    </div>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="app-footer">
+        <p>&copy; Waznaw 2025 <span id="copyrightText">Все права защищены</span></p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

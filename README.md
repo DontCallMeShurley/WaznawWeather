@@ -22,12 +22,22 @@
 - [Open-Meteo API](https://open-meteo.com) для данных о погоде
 
 ## Скриншоты
-<img width="1243" height="1140" alt="image" src="https://github.com/user-attachments/assets/0e0dfeb1-350e-4dd1-b407-9f572ae1e2a8" />
-<img width="1229" height="1141" alt="image" src="https://github.com/user-attachments/assets/d4d08687-05f3-4c9a-8b9b-2994aad8b6bc" />
-<img width="1181" height="440" alt="image" src="https://github.com/user-attachments/assets/1ae6d259-1026-483c-878b-fe2361c33205" />
-<img width="1202" height="865" alt="image" src="https://github.com/user-attachments/assets/4152649f-4541-4280-b5a4-06b3dc4c6458" />
-<img width="1196" height="636" alt="image" src="https://github.com/user-attachments/assets/4bb6271b-8615-4c43-8c4a-a417b3598ad0" />
 
+<table>
+  <tr>
+    <td><img width="1243" height="1140" alt="Общий вид, тёмная тема" src="https://github.com/user-attachments/assets/0e0dfeb1-350e-4dd1-b407-9f572ae1e2a8" /></td>
+    <td><img width="1229" height="1141" alt="Общий вид, светлая тема" src="https://github.com/user-attachments/assets/d4d08687-05f3-4c9a-8b9b-2994aad8b6bc" /></td>
+  </tr>
+  <tr>
+    <td><img width="1181" height="440" alt="Почасовой прогноз" src="https://github.com/user-attachments/assets/1ae6d259-1026-483c-878b-fe2361c33205" /></td>
+    <td><img width="1202" height="865" alt="Прогноз на 7 дней" src="https://github.com/user-attachments/assets/4152649f-4541-4280-b5a4-06b3dc4c6458" /></td>
+  </tr>
+  <tr>
+    <td colspan="2" align="center">
+      <img width="1196" height="636" alt="История запросов" src="https://github.com/user-attachments/assets/4bb6271b-8615-4c43-8c4a-a417b3598ad0" />
+    </td>
+  </tr>
+</table>
 ## Установка и запуск
 
 ### Веб-версия
@@ -81,4 +91,4 @@ weather-app/
 Демо версия доступна по адресу weather.waznaw.ru
 
 ## Автор
-Проект разработан Shurley, CEO Waznaw © 2025
+Это проект с открытым исходным кодом, распространяемый под лицензией MIT. Исходный код доступен на [GitHub](https://github.com/DontCallMeShurley/WaznawWeather).

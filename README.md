@@ -22,11 +22,11 @@
 - [Open-Meteo API](https://open-meteo.com) для данных о погоде
 
 ## Скриншоты
-
-<img width="1294" height="1050" alt="image" src="https://github.com/user-attachments/assets/ac20dc64-da4e-465d-89b5-22226b87551f" />
-<img width="1252" height="876" alt="image" src="https://github.com/user-attachments/assets/84b015a3-4e05-4f41-89c2-690f380fccb3" />
-<img width="1189" height="637" alt="image" src="https://github.com/user-attachments/assets/45086288-f4a3-474b-abd8-b99756e7509c" />
-
+<img width="1243" height="1140" alt="image" src="https://github.com/user-attachments/assets/0e0dfeb1-350e-4dd1-b407-9f572ae1e2a8" />
+<img width="1229" height="1141" alt="image" src="https://github.com/user-attachments/assets/d4d08687-05f3-4c9a-8b9b-2994aad8b6bc" />
+<img width="1181" height="440" alt="image" src="https://github.com/user-attachments/assets/1ae6d259-1026-483c-878b-fe2361c33205" />
+<img width="1202" height="865" alt="image" src="https://github.com/user-attachments/assets/4152649f-4541-4280-b5a4-06b3dc4c6458" />
+<img width="1196" height="636" alt="image" src="https://github.com/user-attachments/assets/4bb6271b-8615-4c43-8c4a-a417b3598ad0" />
 
 ## Установка и запуск
 
